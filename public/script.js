@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       slide.className = "swiper-slide";
 
       const img = document.createElement("img");
-      img.src = "images/" + pelicula.imagen;
+      img.src = "/images/" + pelicula.imagen;
       img.alt = pelicula.titulo;
 
       const title = document.createElement("h3");
