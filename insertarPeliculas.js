@@ -1,31 +1,42 @@
-require('dotenv').config();
+// scripts/poblarPeliculas.js
 const mongoose = require('mongoose');
-const Pelicula = require('./models/Pelicula');
+require('dotenv').config();
+const Pelicula = require('../models/Pelicula');
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(async () => {
-  console.log("📦 Conectado a MongoDB");
+const peliculas = [
+  {
+    titulo: "Dune",
+    imagen: "dune.png",
+  },
+  {
+    titulo: "Interstellar",
+    imagen: "interstellar.jpg",
+  },
+  {
+    titulo: "Avatar",
+    imagen: "avatar.png",
+  },
+  {
+    titulo: "Oppenheimer",
+    imagen: "oppenheimer.jpg",
+  },
+];
 
-  const nuevasPeliculas = [
-    {
-      titulo: "Dune: Parte Dos",
-      imagen: "dune.jpg",
-      descripcion: "Paul Atreides se une a los Fremen.",
-      categoria: "Ciencia Ficción",
-      estreno: "2024-03-01"
-    },
-    {
-      titulo: "Intensamente 2",
-      imagen: "intensamente2.jpg",
-      descripcion: "Nuevas emociones llegan a la cabeza de Riley.",
-      categoria: "Animación",
-      estreno: "2024-06-14"
-    }
-  ];
+async function poblar() {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
-  await Pelicula.insertMany(nuevasPeliculas);
-  console.log("🎬 Películas añadidas");
-  mongoose.connection.close();
-});
+    await Pelicula.deleteMany({});
+    await Pelicula.insertMany(peliculas);
+    console.log("Películas insertadas correctamente.");
+    process.exit();
+  } catch (error) {
+    console.error("Error al poblar películas:", error);
+    process.exit(1);
+  }
+}
+
+poblar();
