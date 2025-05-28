@@ -14,26 +14,19 @@ mongoose.connect(process.env.MONGODB_URI, {
 .then(() => console.log('✅ Conectado a MongoDB Atlas'))
 .catch((err) => console.error('❌ Error MongoDB:', err));
 
+// Middleware para parsear JSON
+app.use(express.json());
+
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta para la app web
+// API para obtener películas (si no existe aún)
+app.use('/api/peliculas', require('./routes/peliculas'));
+
+// Fallback para single page app
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-
-
-// Ruta API para obtener películas desde MongoDB
-const Pelicula = require('./models/Pelicula');
-app.get('/api/peliculas', async (req, res) => {
-  try {
-    const peliculas = await Pelicula.find();
-    res.json(peliculas);
-  } catch (error) {
-    res.status(500).json({ error: 'Error al obtener películas' });
-  }
-});
-
 
 // Iniciar servidor
 app.listen(PORT, () => {
