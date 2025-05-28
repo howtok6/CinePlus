@@ -6,7 +6,7 @@ const Pelicula = require('./models/Pelicula');
 const peliculas = [
   {
     titulo: "Dune",
-    imagen: "dune.png",
+    imagen: "dune.jpg",
   },
   {
     titulo: "Interstellar",
@@ -14,7 +14,7 @@ const peliculas = [
   },
   {
     titulo: "Avatar",
-    imagen: "avatar.png",
+    imagen: "avatar.jpg",
   },
   {
     titulo: "Oppenheimer",
