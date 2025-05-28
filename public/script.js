@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     new Swiper(".mySwiper", {
       slidesPerView: 3,
       slidesPerGroup: 3,
-      spaceBetween: 10,
+      spaceBetween: 5,
       loop: true,
       pagination: {
         el: ".swiper-pagination",
