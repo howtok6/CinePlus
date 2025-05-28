@@ -1,7 +1,7 @@
 // scripts/poblarPeliculas.js
 const mongoose = require('mongoose');
 require('dotenv').config();
-const Pelicula = require('../models/Pelicula');
+const Pelicula = require('./models/Pelicula');
 
 const peliculas = [
   {
