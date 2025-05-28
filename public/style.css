@@ -1,0 +1,34 @@
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+}
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  z-index: 10;
+  background: transparent;
+}
+.nav-left, .nav-right {
+  display: flex;
+  gap: 15px;
+}
+.logo {
+  font-size: 1.8em;
+}
+.swiper {
+  width: 100%;
+  height: 40vh;
+}
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
