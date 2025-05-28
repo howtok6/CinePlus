@@ -7,10 +7,11 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Conexión a MongoDB Atlas
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect("mongodb+srv://gabrielcv20:abc132023@cineplusdb.xv9dgo9.mongodb.net/?retryWrites=true&w=majority&appName=CinePlusDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
+
 .then(() => console.log('✅ Conectado a MongoDB Atlas'))
 .catch((err) => console.error('❌ Error MongoDB:', err));
 

@@ -1,11 +1,15 @@
-
-const express = require("express");
+// routes/peliculas.js
+const express = require('express');
 const router = express.Router();
-const Pelicula = require("../models/Pelicula");
+const Pelicula = require('../models/Pelicula');
 
-router.get("/", async (req, res) => {
-  const peliculas = await Pelicula.find();
-  res.json(peliculas);
+router.get('/', async (req, res) => {
+  try {
+    const peliculas = await Pelicula.find();
+    res.json(peliculas);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener películas' });
+  }
 });
 
 module.exports = router;
