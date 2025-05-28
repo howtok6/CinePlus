@@ -22,6 +22,19 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+
+// Ruta API para obtener películas desde MongoDB
+const Pelicula = require('./models/Pelicula');
+app.get('/api/peliculas', async (req, res) => {
+  try {
+    const peliculas = await Pelicula.find();
+    res.json(peliculas);
+  } catch (error) {
+    res.status(500).json({ error: 'Error al obtener películas' });
+  }
+});
+
+
 // Iniciar servidor
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);

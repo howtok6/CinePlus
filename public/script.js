@@ -1,60 +1,57 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const slider = document.querySelector(".slider");
-  const indicators = document.querySelector(".indicators");
-  let currentIndex = 0;
-  let slides = [];
 
-  // Función para cargar imágenes dinámicamente desde el backend
-  async function loadImages() {
-    try {
-      const response = await fetch("/api/images");
-      const imagePaths = await response.json();
+document.addEventListener("DOMContentLoaded", async function () {
+  const container = document.getElementById("slider-container");
 
-      slider.innerHTML = ""; // Limpiar el slider
-      indicators.innerHTML = ""; // Limpiar indicadores
+  try {
+    const res = await fetch("/api/peliculas");
+    const peliculas = await res.json();
 
-      imagePaths.forEach((src, index) => {
-        const slide = document.createElement("div");
-        slide.classList.add("slide");
-        if (index === 0) slide.classList.add("active");
+    container.innerHTML = ""; // Limpiar el contenedor
 
-        const img = document.createElement("img");
-        img.src = src;
-        img.alt = `Película ${index + 1}`;
-        img.classList.add("slider-image");
+    peliculas.forEach(pelicula => {
+      const slide = document.createElement("div");
+      slide.className = "swiper-slide";
 
-        slide.appendChild(img);
-        slider.appendChild(slide);
+      const img = document.createElement("img");
+      img.src = "images/" + pelicula.imagen;
+      img.alt = pelicula.titulo;
 
-        const dot = document.createElement("span");
-        dot.classList.add("dot");
-        if (index === 0) dot.classList.add("active");
-        dot.addEventListener("click", () => showSlide(index));
-        indicators.appendChild(dot);
-      });
+      const title = document.createElement("h3");
+      title.textContent = pelicula.titulo;
 
-      slides = document.querySelectorAll(".slide");
-    } catch (error) {
-      console.error("Error cargando imágenes:", error);
-    }
-  }
-
-  // Función para mostrar un slide específico
-  function showSlide(index) {
-    if (!slides.length) return;
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
-      indicators.children[i].classList.toggle("active", i === index);
+      slide.appendChild(img);
+      slide.appendChild(title);
+      container.appendChild(slide);
     });
-    currentIndex = index;
+
+    new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      loop: true,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      breakpoints: {
+        640: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 4,
+          spaceBetween: 40,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Error al cargar películas:", error);
   }
-
-  // Cambio automático de slides
-  setInterval(() => {
-    if (!slides.length) return;
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }, 5000); // cambia cada 5 segundos
-
-  loadImages();
 });
