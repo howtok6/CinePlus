@@ -25,7 +25,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
 
     new Swiper(".mySwiper", {
-      slidesPerView: 1,
+      slidesPerView: 3,
+      slidesPerGroup: 3,
       spaceBetween: 10,
       loop: true,
       pagination: {

@@ -1,42 +1,25 @@
-// scripts/poblarPeliculas.js
 const mongoose = require('mongoose');
-require('dotenv').config();
 const Pelicula = require('./models/Pelicula');
+require('dotenv').config();
 
-const peliculas = [
-  {
-    titulo: "Dune",
-    imagen: "dune.jpg",
-  },
-  {
-    titulo: "Interstellar",
-    imagen: "interstellar.jpg",
-  },
-  {
-    titulo: "Avatar",
-    imagen: "avatar.jpg",
-  },
-  {
-    titulo: "Oppenheimer",
-    imagen: "oppenheimer.jpg",
-  },
-];
+mongoose.connect(process.env.MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}).then(async () => {
+  console.log('Conectado a MongoDB');
 
-async function poblar() {
-  try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+  const peliculas = [
+    { titulo: 'Dune', imagen: 'dune.jpg' },
+    { titulo: 'Interstellar', imagen: 'interstellar.jpg' },
+    { titulo: 'Tenet', imagen: 'tenet.jpg' },
+    { titulo: 'Inception', imagen: 'inception.jpg' },
+    { titulo: 'Matrix', imagen: 'matrix.jpg' },
+  ];
 
-    await Pelicula.deleteMany({});
-    await Pelicula.insertMany(peliculas);
-    console.log("Películas insertadas correctamente.");
-    process.exit();
-  } catch (error) {
-    console.error("Error al poblar películas:", error);
-    process.exit(1);
-  }
-}
+  await Pelicula.insertMany(peliculas);
+  console.log('Películas insertadas');
 
-poblar();
+  mongoose.disconnect();
+}).catch(err => {
+  console.error('Error al conectar a MongoDB', err);
+});
