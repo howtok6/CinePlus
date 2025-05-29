@@ -2,7 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const Pelicula = require("./models/Pelicula");
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect("mongodb+srv://gabrielcv20:abc132023@cineplusdb.xv9dgo9.mongodb.net/?retryWrites=true&w=majority&appName=CinePlusDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
