@@ -1,25 +1,28 @@
-const mongoose = require('mongoose');
-const Pelicula = require('./models/Pelicula');
-require('dotenv').config();
+require("dotenv").config();
+const mongoose = require("mongoose");
+const Pelicula = require("./models/Pelicula");
 
-mongoose.connect(process.env.MONGODB_URI, {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(async () => {
-  console.log('Conectado a MongoDB');
+  useUnifiedTopology: true
+})
+.then(() => {
+  console.log("Conectado a MongoDB");
 
-  const peliculas = [
+  return Pelicula.insertMany([
     { titulo: 'Dune', imagen: 'dune.jpg' },
     { titulo: 'Interstellar', imagen: 'interstellar.jpg' },
     { titulo: 'Tenet', imagen: 'tenet.jpg' },
     { titulo: 'Inception', imagen: 'inception.jpg' },
     { titulo: 'Matrix', imagen: 'matrix.jpg' },
-  ];
+    { titulo : 'Sonic', imagen: 'sonic.jpg'}
+  ]);
 
-  await Pelicula.insertMany(peliculas);
-  console.log('Películas insertadas');
-
-  mongoose.disconnect();
-}).catch(err => {
-  console.error('Error al conectar a MongoDB', err);
+})
+.then(() => {
+  console.log("Películas insertadas correctamente");
+  return mongoose.disconnect();
+})
+.catch((error) => {
+  console.error("Error insertando películas:", error);
 });

@@ -4,14 +4,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // Conexión a MongoDB Atlas
-mongoose.connect("mongodb+srv://gabrielcv20:abc132023@cineplusdb.xv9dgo9.mongodb.net/?retryWrites=true&w=majority&appName=CinePlusDB", {
+mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-
 .then(() => console.log('✅ Conectado a MongoDB Atlas'))
 .catch((err) => console.error('❌ Error MongoDB:', err));
 
@@ -21,12 +20,13 @@ app.use(express.json());
 // Middleware para servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API para obtener películas (si no existe aún)
-app.use('/api/peliculas', require('./routes/peliculas'));
+// Ruta API para películas
+const peliculasRoutes = require("./routes/peliculas");
+app.use("/api/peliculas", peliculasRoutes);
 
 // Fallback para single page app
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 // Iniciar servidor

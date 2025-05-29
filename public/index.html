@@ -11,25 +11,61 @@
 </head>
 <body>
   <header>
-    <nav class="navbar">
-      <ul class="nav-left">
-        <li><a href="#catalogo">Cartelera</a></li>
-      </ul>
+    <header class="topbar">
       <div class="logo">🎬 CinePlus</div>
-      <ul class="nav-right">
-        <li><a href="#tickets">Tickets</a></li>
-        <li><a href="#reservas">Reservas</a></li>
-      </ul>
-    </nav>
+      <nav class="menu">
+        <a href="#">Películas</a>
+        <a href="#">Cines</a>
+        <a href="#">Promociones</a>
+        <a href="#">Confitería</a>
+      </nav>
+      <div class="top-icons">
+        <input type="text" placeholder="Buscar..." class="search-bar">
+        
+        <button title="Perfil">👤</button>
+      </div>
+    </header>
+
   </header>
   <main>
     <section id="catalogo">
       <div class="swiper mySwiper">
         <div class="swiper-wrapper" id="slider-container">
-          <!-- Películas se cargarán aquí desde la base de datos -->
+          <!-- Aquí Swiper insertará los slides -->
         </div>
         <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
       </div>
+
+
+      <section class="filtros">
+        <h3>¿Qué película quieres ver?</h3>
+        <div class="filtro-grupo">
+          <select>
+            <option>Por película</option>
+            <option>Dune</option>
+            <option>Oppenheimer</option>
+          </select>
+          <select>
+            <option>Por ciudad</option>
+            <option>Lima</option>
+            <option>Arequipa</option>
+          </select>
+          <select>
+            <option>Por cine</option>
+            <option>CinePlus San Borja</option>
+            <option>CinePlus Plaza Norte</option>
+          </select>
+          <select>
+            <option>Por fecha</option>
+            <option>Hoy</option>
+            <option>Mañana</option>
+          </select>
+          <button class="filtrar-btn">Filtrar</button>
+        </div>
+      </section>
+
     </section>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
