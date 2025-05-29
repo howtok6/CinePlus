@@ -8,6 +8,7 @@ router.get('/', async (req, res) => {
     const peliculas = await Pelicula.find();
     res.json(peliculas);
   } catch (error) {
+    console.error("Error al consultar MongoDB:", err);
     res.status(500).json({ error: 'Error al obtener películas' });
   }
 });
