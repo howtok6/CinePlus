@@ -1,0 +1,15 @@
+# Ignorar variables de entorno
+.env
+
+# Ignorar dependencias
+node_modules/
+
+# Ignorar logs
+*.log
+
+# Ignorar resultados de pruebas
+coverage/
+
+# Ignorar sistema operativo
+.DS_Store
+Thumbs.db
