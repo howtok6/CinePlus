@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>cineplus.cl/peliculas</title>
+  
+  <!-- Agregar Font Awesome para los iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+  <div class="logo">
+    <a href="../index.html">
+      <img src="Support/Imagenes/Logo Neon CINEPLUS.png" alt="Logo CINEPLUS" class="logo-img">
+    </div>
+    <nav class="menu">
+      <a href="#">Películas</a>
+      <a href="Support/index.html">Contácto</a>
+    </nav>
+    <div class="iconos">
+      <button class="icono" aria-label="Cuenta">
+        <i class="fas fa-user"></i>
+      </button>
+    </div>
+  </header>
+
+  <section class="titulo">
+    <h1 class="titulo-principal">Películas</h1>
+    <div class="categorias">
+      <button id="btn-cartelera" class="activo">En cartelera</button>
+      <button id="btn-estrenos" class="inactivo">Próximos estrenos</button>
+    </div>
+  </section>
+
+  <main class="contenido">
+    <aside class="filtros">
+      <h2>Filtrar por:</h2>
+      <div class="filtro-ciudad">
+        <h3>Ciudad</h3>
+        <ul>
+          <li><a href="#" class="filtro-ciudad-link" data-ciudad="todas">Mostrar todo</a></li>
+          <li><a href="#" class="filtro-ciudad-link" data-ciudad="santiago">Santiago</a></li>
+          <li><a href="#" class="filtro-ciudad-link" data-ciudad="concepcion">Concepción</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="peliculas">
+      <div class="pelicula" data-ciudad="santiago,concepcion">
+        <div class="pelicula-img">
+          <img src="Imagenes/minecraft movie header.jpeg" alt="cartelera minecraft">
+          <span class="etiqueta">Estreno</span>
+        </div>
+        <div class="pelicula-info">
+          <h3>Minecraft</h3>
+          <p>Aventura, 1h 41min, TE</p>
+        </div>
+      </div>
+
+      <div class="pelicula" data-ciudad="concepcion">
+        <div class="pelicula-img">
+          <img src="Imagenes/capitan-america-un-nuevo-mundo.jpeg" alt="cartelera cap america">
+          <span class="etiqueta">Estreno</span>
+        </div>
+        <div class="pelicula-info">
+          <h3>Capitan America: Un Nuevo Mundo</h3>
+          <p>Acción, 2h, TE +7</p>
+        </div>
+      </div>
+
+      <!-- Sonic -->
+      <div class="pelicula" data-ciudad="santiago">
+        <div class="pelicula-img">
+          <img src="Imagenes/pelicula sonic.jpg" alt="Sonic">
+          <span class="etiqueta">Estreno</span>
+        </div>
+        <div class="pelicula-info">
+          <h3>Sonic</h3>
+          <p>Aventura, 1h 39min, TE</p>
+        </div>
+      </div>
+
+      <!-- Creed 2 -->
+      <div class="pelicula" data-ciudad="santiago">
+        <div class="pelicula-img">
+          <img src="Imagenes/creed2.jpg" alt="Creed 2">
+          
+        </div>
+        <div class="pelicula-info">
+          <h3>Creed 2</h3>
+          <p>Drama, 2h 10min, TE+13</p>
+        </div>
+      </div>
+
+      <div class="pelicula" data-ciudad="santiago">
+        <div class="pelicula-img">
+          <img src="Imagenes/dune2.jpg" alt="dune 2 cartelera">
+          
+        </div>
+        <div class="pelicula-info">
+          <h3>Dune: Parte Dos</h3>
+          <p>Ciencia ficción, 2h 46min, TE+13</p>
+        </div>
+      </div>
+
+      <!-- Shrek -->
+      <div class="pelicula" data-ciudad="concepcion">
+        <div class="pelicula-img">
+          <img src="Imagenes/shrek.webp" alt="Shrek">
+          
+        </div>
+        <div class="pelicula-info">
+          <h3>Shrek</h3>
+          <p>Animación, 1h 30min, TE</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="peliculas" id="proximos-estrenos" style="display: none;">
+      <div class="pelicula">
+        <div class="pelicula-img">
+          <img src="Imagenes/htyd LIVEACTION POSTER.webp" alt="Cómo entrenar a tu dragón">
+          <span class="etiqueta">Próximamente</span>
+        </div>
+        <div class="pelicula-info">
+          <h3>Cómo entrenar a tu dragón</h3>
+          <p>Aventura, próximamente en cines</p>
+        </div>
+      </div>
+
+      <div class="pelicula">
+        <div class="pelicula-img">
+          <img src="Imagenes/liloystichposter.webp" alt="Lilo y Stitch">
+          <span class="etiqueta">Próximamente</span>
+        </div>
+        <div class="pelicula-info">
+          <h3>Lilo y Stitch</h3>
+          <p>Familiar, próximamente en cines</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="main.js"></script>
+</body>
+</html>

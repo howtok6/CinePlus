@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Reembolso</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="stylereembolso.css">
+</head>
+<body>
+
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="../Imagenes/Logo Neon CINEPLUS.png" alt="Logo Cineplus" />
+    </div>
+    <nav class="menu">
+      <a href="../../index.html">Películas</a>
+      <a href="../index.html">Contácto</a>
+    </nav>
+    <div class="iconos">
+      <button class="icono" aria-label="Cuenta">
+        <i class="fas fa-user"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="form-container">
+    <h1>Formulario de Reembolso</h1>
+    <form id="reembolsoForm" enctype="multipart/form-data">
+      <label for="nombre">Nombre completo</label>
+      <input type="text" id="nombre" name="nombre" />
+
+      <label for="correo">Correo electrónico <span>*</span></label>
+      <input type="email" id="correo" name="correo" required />
+
+      <label for="orden">Número de orden o ID de compra</label>
+      <input type="text" id="orden" name="orden" />
+
+      <label for="fecha">Fecha de la función / producto</label>
+      <input type="date" id="fecha" name="fecha" />
+
+      <label for="motivo">Motivo del reembolso</label>
+      <textarea id="motivo" name="motivo" rows="4"></textarea>
+
+      <label for="comprobante">Adjuntar comprobante o ticket</label>
+      <input type="file" id="comprobante" name="comprobante" />
+
+      <div class="checkbox-group">
+        <input type="checkbox" id="acepta" name="acepta" required />
+        <label for="acepta">Acepto los términos y condiciones</label>
+      </div>
+
+      <button type="submit">Enviar solicitud</button>
+    </form>
+  </main>
+
+  <script src="reembolso.js"></script>
+</body>
+</html>

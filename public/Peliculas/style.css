@@ -1,0 +1,242 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #2d3748;
+    font-family: sans-serif;
+}
+
+/* NAVBAR */
+/* NAVBAR (copiado y adaptado desde el formulario de contacto) */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+  border-bottom: 3px solid #0056b3;
+  gap: 20px;
+}
+
+.navbar .logo {
+  height: 35px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  height: 40px;
+  width: auto;
+}
+
+.navbar .menu {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex: 1;
+  padding-right: 60px;
+}
+
+.navbar .menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.navbar .menu a:hover {
+  color: #0056b3;
+}
+
+.navbar .icono {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: -60px;
+  transition: color 0.3s ease;
+  color: #333;
+}
+
+.navbar .icono:hover {
+  color: #0056b3;
+}
+
+.iconos {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* TÍTULO PRINCIPAL */
+.titulo {
+    text-align: center;
+    padding: 2.5rem 1rem;
+}
+
+.titulo h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #1030d0;
+}
+
+.categorias {
+    margin-top: 0.5rem;
+}
+
+.categorias span {
+    margin-right: 1rem;
+    font-size: 1rem;
+    color: #6b7280;
+}
+
+.categorias .activo {
+    border-bottom: 2px solid #db2777;
+    color: #db2777;
+    font-weight: 600;
+}
+
+/* CONTENIDO PRINCIPAL */
+.contenido {
+    display: flex;
+    margin-left: 50px;  /* pequeño margen a la izquierda */
+    margin-right: auto;
+    padding: 0;
+    gap: 2rem;
+}
+
+/* FILTROS */
+.filtros {
+    width: 25%;
+    margin: 0;
+    padding: 0;
+}
+
+.filtros h2 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #1030d0;
+}
+
+.filtros h3 {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.filtros ul {
+    margin-top: 0.5rem;
+    list-style: none;
+}
+
+.filtros li a {
+    display: block;
+    margin-bottom: 0.25rem;
+    color: #111827;
+    text-decoration: none;
+    transition: text-decoration 0.2s ease;
+}
+
+.filtros li a:hover {
+    text-decoration: underline;
+}
+
+/* PELÍCULAS */
+.peliculas {
+    display: grid;
+    padding-right: 50px;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    flex: 1;
+}
+
+@media (min-width: 640px) {
+    .peliculas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .peliculas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.pelicula {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.pelicula-img {
+    position: relative;
+}
+
+.pelicula-img img {
+    width: 100%;
+    display: block;
+}
+
+.etiqueta {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    background-color: #db2777;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.pelicula-info {
+    padding: 1rem;
+}
+
+.pelicula-info h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.pelicula-info p {
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.navbar .icono {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: -60px;
+  transition: color 0.3s ease;
+  color: #333;
+}
+
+.navbar .icono:hover {
+  color: #0056b3;
+}
+
+.categorias button {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    margin-right: 1rem;
+    cursor: pointer;
+    color: #6b7280;
+}
+
+.categorias button.activo {
+    border-bottom: 2px solid #db2777;
+    color: #db2777;
+    font-weight: 600;
+}

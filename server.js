@@ -1,19 +1,15 @@
-// server.js
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
-const app = express();
-const PORT = process.env.PORT || 8080;
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 
+const app = express();
+const PORT = process.env.PORT || 8080;
 
-
-console.log("Conectando a MongoDB URI:", process.env.MONGODB_URI);
-
-
-// Conexión a MongoDB Atlas
+// 🔧 Conexión a MongoDB
+console.log("Conectando a MongoDB URI:", process.env.MONGO_URI);
 mongoose.connect(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -21,23 +17,17 @@ mongoose.connect(process.env.MONGO_URI, {
 .then(() => console.log('✅ Conectado a MongoDB Atlas'))
 .catch((err) => console.error('❌ Error MongoDB:', err));
 
-// Middleware para parsear JSON
+// 🔧 Middleware JSON
 app.use(express.json());
 
-// Middleware para servir archivos estáticos
+// 🔧 Archivos estáticos desde "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Ruta API para películas
+// 🔧 Rutas API
 const peliculasRoutes = require("./routes/peliculas");
 app.use("/api/peliculas", peliculasRoutes);
 
-// Fallback para single page app
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/public/index.html");
-});
-
-
-
+// 🔧 Swagger
 const swaggerOptions = {
   definition: {
     openapi: "3.0.0",
@@ -53,10 +43,17 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
+// ✅ Fallback solo para la raíz
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
 
+// ✅ Ruta catch-all (opcional, si no usas SPA)
+app.get("*", (req, res) => {
+  res.status(404).send("Página no encontrada");
+});
 
-
-// Iniciar servidor
+// 🚀 Iniciar servidor
 app.listen(PORT, () => {
   console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
 });

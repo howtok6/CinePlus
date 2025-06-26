@@ -1,0 +1,147 @@
+/* Estilos generales para la página de contacto */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+.header-contacto {
+  background-color: #0056b3;
+  padding: 40px 20px;
+  text-align: center;
+  color: white;
+}
+
+.header-contacto h1 {
+  margin: 0;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+
+.subtitulo {
+  margin-top: 10px;
+  font-size: 18px;
+  color: #ffeaea;
+}
+
+.seccion-opciones {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.opciones-contenedor {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.card-opcion {
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 240px;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-opcion img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.card-opcion p {
+  padding: 15px;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+
+.card-opcion:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .opciones-contenedor {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card-opcion {
+    width: 90%;
+  }
+}
+
+/* Estilos de la barra superior (navbar) */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 10px 20px;
+  border-bottom: 3px solid #0056b3;
+  gap: 20px;
+}
+
+.navbar .logo {
+  height: 35px;
+  margin-right: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  height: 40px;
+  width: auto;
+}
+
+.menu {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex: 1;
+  padding-right: 120px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.menu a:hover {
+  color: #0056b3;
+}
+
+
+.navbar .icono {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: -60px;
+  transition: color 0.3s ease;
+  color: #333;
+}
+
+.navbar .icono:hover {
+  color: #0056b3;
+}
+
+.logo-img {
+  height: 40px;
+  object-fit: contain;
+}

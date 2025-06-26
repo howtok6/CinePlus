@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Contacto - Cineplus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="styleformulario.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">
+      <img src="../Imagenes/Logo Neon CINEPLUS.png" alt="Logo Cineplus" />
+    </div>
+    <nav class="menu">
+      <a href="../../index.html">Películas</a>
+      <a href="../index.html">Contácto</a>
+    </nav>
+    <div class="iconos">
+      <button class="icono" aria-label="Cuenta">
+        <i class="fas fa-user"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="formulario-container">
+
+    <form class="formulario">
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre">
+
+      <label for="email">Correo electrónico <span class="requerido">*</span></label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="tipo-consulta">Tipo de consulta <span class="requerido">*</span></label>
+      <select id="tipo-consulta" name="tipo-consulta" required>
+        <option value="">Seleccione una opción</option>
+        <option value="sugerencia">Sugerencia</option>
+        <option value="duda">Duda</option>
+        <option value="reclamo">Reclamo</option>
+        <option value="otro">Otro</option>
+      </select>
+
+      <label for="asunto">Asunto o título del mensaje</label>
+      <input type="text" id="asunto" name="asunto">
+
+      <label for="descripcion">Descripción o mensaje <span class="requerido">*</span></label>
+      <textarea id="descripcion" name="descripcion" rows="5" required></textarea>
+
+      <label for="archivo">Archivos adjuntos (opcional)</label>
+      <input type="file" id="archivo" name="archivo">
+
+      <button type="submit">Enviar</button>
+    </form>
+  </main>
+
+  <script src="formulario.js"></script>
+</body>
+</html>
