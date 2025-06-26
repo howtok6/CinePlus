@@ -1,3 +1,71 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const filas = ['A', 'B', 'C', 'D', 'E'];
+  const columnas = 8;
+  const selector = document.getElementById('selector-asientos');
+  const cantidad = document.getElementById('cantidad');
+  const reservarBtn = document.getElementById('reservar-btn');
+
+  const asientosOcupados = ['A3', 'B5', 'D1']; // Simula base de datos
+  const asientosSeleccionados = [];
+
+  // Crear asientos dinámicamente
+  filas.forEach(fila => {
+    const divFila = document.createElement('div');
+    divFila.classList.add('fila');
+
+    for (let i = 1; i <= columnas; i++) {
+      const asiento = document.createElement('div');
+      const id = `${fila}${i}`;
+      asiento.classList.add('asiento');
+      asiento.textContent = i;
+
+      if (asientosOcupados.includes(id)) {
+        asiento.classList.add('ocupado');
+      } else {
+        asiento.addEventListener('click', () => {
+          asiento.classList.toggle('seleccionado');
+          const index = asientosSeleccionados.indexOf(id);
+          if (index === -1) {
+            asientosSeleccionados.push(id);
+          } else {
+            asientosSeleccionados.splice(index, 1);
+          }
+          cantidad.textContent = asientosSeleccionados.length;
+        });
+      }
+
+      asiento.setAttribute('data-id', id);
+      divFila.appendChild(asiento);
+    }
+
+    selector.appendChild(divFila);
+  });
+
+  // Función de reserva
+  reservarBtn.addEventListener('click', () => {
+    if (asientosSeleccionados.length === 0) {
+      alert("No has seleccionado ningún asiento.");
+      return;
+    }
+
+    // Aquí simularías enviar a una API
+    console.log("Reservando asientos:", asientosSeleccionados);
+
+    // Simula éxito: desactiva los seleccionados
+    asientosSeleccionados.forEach(id => {
+      const asiento = document.querySelector(`.asiento[data-id="${id}"]`);
+      asiento.classList.remove('seleccionado');
+      asiento.classList.add('ocupado');
+      asiento.removeEventListener('click', null);
+    });
+
+    alert(`¡Reserva exitosa! Asientos: ${asientosSeleccionados.join(", ")}`);
+    asientosSeleccionados.length = 0;
+    cantidad.textContent = "0";
+  });
+});
+
+
 document.addEventListener("DOMContentLoaded", async function () {
   const container = document.getElementById("slider-container");
 

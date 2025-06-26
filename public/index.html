@@ -10,15 +10,19 @@
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-  <header>
-    <header class="topbar">
-      <div class="logo">🎬 CinePlus</div>
-      <nav class="menu">
-        <a href="Peliculas/index.html">Películas</a>
-        <a href="#">Cines</a>
-        <a href="#">Promociones</a>
-        <a href="#">Confiteria</a>
-      </nav>
+  <header class="topbar">
+  <div class="logo">
+    <a href="index.html">
+      <img src="Peliculas/Support/Imagenes/Logo Neon CINEPLUS.png" alt="CinePlus Logo" class="logo-img">
+
+    </a>
+  </div>
+  <nav class="menu">
+    <a href="Peliculas/index.html">Películas</a>
+    
+    
+    <a href="Peliculas/Support/index.html">Contacto</a>
+  </nav>
       <div class="top-icons">
         <input type="text" placeholder="Buscar..." class="search-bar">
         
@@ -67,6 +71,16 @@
       </section>
 
     </section>
+
+  <section class="seleccion-asientos">
+    <h2>Selecciona tus asientos</h2>
+    <div class="pantalla">Pantalla</div>
+    <div id="selector-asientos"></div>
+    <p id="info-asientos">Seleccionaste <span id="cantidad">0</span> asiento(s).</p>
+    <button id="reservar-btn">Reservar</button>
+  </section>
+
+
   </main>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
